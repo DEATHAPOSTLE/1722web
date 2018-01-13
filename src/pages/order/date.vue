@@ -2,15 +2,15 @@
   <div class="date">
     <div class="date_left">游玩日期</div>
     <div class="date_right">
-      <span class="date_none">
+      <span :class="{'date_none': todayNone}">
         <p>今天</p>
         <i>{{dateResult}}</i>
       </span>
-      <span class="date_active date_center">
+      <span class="date_center" @click="clickTomorrow" :class="{'date_noset': tomorrowNoset, 'date_active': tomorrowAct}">
         <p>明天</p>
         <i>{{tomorrowResult}}</i>
       </span>
-      <span class="date_noset">
+      <span @click="clickOther" :class="{'date_noset': otherNoset, 'date_active': otherAct}">
         <b>其他日期</b>
       </span>
     </div>
@@ -22,7 +22,12 @@ export default {
   name: 'order-date',
   data () {
     return {
-      dateResult: ''
+      dateResult: '',
+      todayNone: true,
+      tomorrowNoset: true,
+      tomorrowAct: false,
+      otherNoset: true,
+      otherAct: false
     }
   },
   methods: {
@@ -30,6 +35,18 @@ export default {
       const date = new Date()
       this.dateResult = (date.getMonth() + 1) + '月' + date.getDate() + '日'
       this.tomorrowResult = (date.getMonth() + 1) + '月' + (date.getDate() + 1) + '日'
+    },
+    clickTomorrow: function () {
+      this.tomorrowNoset = !this.tomorrowNoset
+      this.tomorrowAct = !this.tomorrowAct
+      this.otherNoset = true
+      this.otherAct = false
+    },
+    clickOther: function () {
+      this.otherNoset = !this.otherNoset
+      this.otherAct = !this.otherAct
+      this.tomorrowNoset = true
+      this.tomorrowAct = false
     }
   },
   created () {
