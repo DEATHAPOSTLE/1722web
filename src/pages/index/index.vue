@@ -2,7 +2,10 @@
 	<div>
 		<index-header></index-header>
   	<index-swiper :list="swiperInfo"></index-swiper>
-    <index-icons></index-icons>
+    <index-icons :list="iconsInfo"></index-icons>
+    <index-hot :list="hotInfo"></index-hot>
+    <index-recommend :list="recommendInfo"></index-recommend>
+    <index-bottom></index-bottom>
 	</div>
   
 </template>
@@ -11,17 +14,26 @@
   import IndexHeader from './header'
   import IndexSwiper from './swiper'
   import IndexIcons from './icons'
+  import IndexHot from './hot'
+  import IndexRecommend from './recommend'
+  import IndexBottom from './bottom'
   import axios from 'axios'
   export default {
     name: 'index',
     components: {
       IndexHeader,
       IndexSwiper,
-      IndexIcons
+      IndexIcons,
+      IndexHot,
+      IndexRecommend,
+      IndexBottom
     },
     data () {
       return {
-        swiperInfo: []
+        swiperInfo: [],
+        iconsInfo: [],
+        hotInfo: [],
+        recommendInfo: []
       }
     },
     methods: {
@@ -33,6 +45,9 @@
       handleGetDateSucc (res) {
         const data = res.data.data
         this.swiperInfo = data.swiperList
+        this.iconsInfo = data.iconsList
+        this.hotInfo = data.hotList
+        this.recommendInfo = data.recommendList
       },
       handleGetDateErr () {
         console.log('error')
