@@ -11,14 +11,12 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-         '/': {
-            // 测试环境
-            target: 'http://localhost:8080',  // 接口域名
-            //changeOrigin: true,  //是否跨域
-            pathRewrite: {
-                '/api': '/static'   //需要rewrite重写的,
-            }              
+      '/': {
+        target: 'http://localhost:8080',
+        pathRewrite: {
+          '/api': '/static'
         }
+      }
     },
 
     // Various Dev Server settings
