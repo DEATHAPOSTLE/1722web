@@ -1,5 +1,5 @@
 <template>
-  <div class="swiper" @touchmove.prevent @scroll.prevent>
+  <div class="swiper" @touchmove.prevent @scroll.prevent v-show="isShow" @click="handleHidden">
       <swiper :options="swiperOption">
         <swiper-slide v-for="item of list" :key="item.id">
           <div class="pos">
@@ -23,8 +23,24 @@ export default {
       swiperOption: {
         loop: true,
         pagination: '.swiper-pagination',
-        paginationType: 'fraction'
-      }
+        paginationType: 'fraction',
+        initialSlide: 1
+      },
+      isShow: false
+    }
+  },
+  created () {
+    this.handleBindEvents()
+  },
+  methods: {
+    handleBindEvents () {
+      this.$bus.$on('change', this.handleShowChange.bind(this))
+    },
+    handleShowChange () {
+      this.isShow = true
+    },
+    handleHidden () {
+      this.isShow = false
     }
   }
 }
@@ -37,21 +53,17 @@ export default {
     width: 100%
     height: 100%
     z-index: 100
+    position: fixed
     background: #000
-    position: absolute
-    display: none
-    .swiper-pagination >>> .swiper-pagination-current
-      font-size: .28rem
-    .swiper-pagination >>> .swiper-pagination-total
-      font-size: .28rem
+    .swiper-pagination
+      color: #fff
     .pos
       width: 100%
       height: 6.6rem
-      overflow: hidden
       margin-top: 45%
+      overflow: hidden
       .swiper-img
-        height: 6.6rem
         width: 10rem
-        margin-left: -1.5rem 
-        
+        height: 6.6rem
+        margin-left: -1.5rem       
 </style>

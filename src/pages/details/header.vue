@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="header-wrap">
+    <div class="header-wrap" @click="handleClick">
         <img class="header-img" src="http://img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_600x330_f922b488.jpg">
     </div>
     <div class="header-info">
@@ -19,7 +19,12 @@
 
 <script>
 export default {
-  name: 'details-header'
+  name: 'details-header',
+  methods: {
+    handleClick () {
+      this.$bus.$emit('change')
+    }
+  }
 }
 </script>
 

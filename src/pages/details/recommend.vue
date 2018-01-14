@@ -56,6 +56,7 @@ export default {
     border-bottom: .22rem solid #f5f5f5
     .qunar-recommend
       height: .88rem
+      background: #fff
       position: relative
       line-height: .88rem
       padding-left: .24rem
@@ -78,6 +79,7 @@ export default {
     .recommend-one
       display: flex
       height: 1.67rem
+      background: #fff
       padding: .18rem .24rem
       border-bottom: 1px solid #d7d7d7
       .one-left
@@ -120,6 +122,7 @@ export default {
     .recommend-two
       display: flex
       height: 1.67rem
+      background: #fff
       padding: .18rem .24rem
       .one-left
         height: 100%
