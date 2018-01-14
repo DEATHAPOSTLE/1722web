@@ -1,40 +1,51 @@
 <template>
-   <div class="main">
-     <div class="cityPlace">
-       <div class="cityPlace-title">您的位置</div>
-       <div class="cityPlace-city">
-         <div class="cityPlace-city-light">
-           <a class="cityPlace-city-name" href="javascript:;">北京</a>
+  <div ref="wrapper">
+     <div class="main">
+       <div class="cityPlace">
+         <div class="cityPlace-title">您的位置</div>
+         <div class="cityPlace-city">
+           <div class="cityPlace-city-light">
+             <a class="cityPlace-city-name" href="javascript:;">北京</a>
+           </div>
          </div>
        </div>
-     </div>
-     <div class="hotCity">
-       <div class="hotCity-title">热门城市</div>
-       <div class="hot-city-city" >
-         <div class="hot-city-item"
-                    v-for="item of hotList" 
-                    :key="item.id">
-           <div class="hot-city-name">{{item.city}}</div>
+       <div class="hotCity">
+         <div class="hotCity-title">热门城市</div>
+         <div class="hot-city-city" >
+           <div class="hot-city-item"
+                      v-for="item of hotList" 
+                      :key="item.id">
+             <div class="hot-city-name">{{item.city}}</div>
+           </div>
          </div>
        </div>
-     </div>
-     <div class="all-city" v-for="item of cityInfo">
-       <div class="city-start">{{item[0]}}</div>
-       <div class="city-city" v-for="item of item[1]">{{item.cityarea}}</div>
-     </div>
-     <div class="initial">
-       <div class="initial-a" v-for="item of cityInfo">{{item[0]}}</div>
+       <div class="all-city" v-for="item of cityInfo" :ref="item">
+         <div class="city-start">{{item[0]}}</div>
+         <div class="city-city" v-for="item of item[1]">{{item.cityarea}}</div>
+       </div>
      </div>
    </div>
 </template>
 
 <script>
 /* eslint-disable */
+import BScroll from 'better-scroll'
 export default {
   name: 'change-city',
   props: {
     hotList: Array,
     cityInfo: Array
+  },
+  methods: {
+    scrollToIndex (item) {
+      this.scroll.scrollToElement(this.$refs[item][0])
+    }
+  },
+  mounted () {
+    this.scroll = new BScroll(this.$refs.wrapper)
+  },
+  activated () {
+    this.scroll && this.scroll.refresh()
   }
 }
 </script>
@@ -87,6 +98,7 @@ export default {
         justify-content: space-between
         flex-wrap: wrap
         padding: .04rem .5rem .26rem .2rem
+        background: #fff
         .hot-city-item
           padding: .2rem .14rem 0 .1rem
           box-sizing: border-box
@@ -115,12 +127,5 @@ export default {
         color: #616161
         background: #fff
         border-bottom: .02rem solid #dfe0e1
-    .initial
-      position: fixed
-      top: 25%
-      right: 0
-      line-height: .35rem
-      text-align: center
-      color: $bgColor
         
 </style>
