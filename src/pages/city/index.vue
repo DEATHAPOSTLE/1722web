@@ -1,9 +1,13 @@
 <template>
-   <div>
+   <div class="main">
      <index-header></index-header>
-     <change-city :hotList="cityList"
+     <search :cityInfo="cityInfo"></search>
+     <change-city class="city"
+                  :hotList="cityList"
                   :cityInfo="cityInfo"
-                  ></change-city>
+                  ref="list">
+                  </change-city>
+     <slidebar :cityInfo="cityInfo" @changeLetter="handleChangeLetter"></slidebar>
    </div>
 </template>
 
@@ -11,12 +15,16 @@
 /* eslint-disable */
 import IndexHeader from './header.vue'
 import ChangeCity from './changeCity.vue'
+import Search from './search.vue'
+import Slidebar from './slidebar.vue'
 import axios from 'axios'
 export default {
   name: 'city',
   components: {
     IndexHeader,
-    ChangeCity
+    ChangeCity,
+    Search,
+    Slidebar
   },
   data () {
     return {
@@ -34,10 +42,12 @@ export default {
       const data = res.data.data
       this.cityList = data.hotcity
       this.cityInfo = data.china
-      console.log(data)
     },
     handleGetCityDataErr () {
       console.log('error')
+    },
+    handleChangeLetter (item) {
+      this.$refs.list.scrollToIndex(item)
     }
   },
   created () {
@@ -47,4 +57,16 @@ export default {
 
 </script>
 
-<style></style>
+<style lang="stylus" acoped>
+  .main
+    display: flex
+    flex-direction: column
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    .city
+      overflow: hidden
+      flex: 1
+</style>

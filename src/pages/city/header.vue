@@ -10,12 +10,6 @@
        </h1>
        <div class="header-right"></div>
       </div>
-      <div class="header-search">
-        <input class="city-keyword" type="text" placeholder="输入城市名或拼音" 
-                                    :style="activeText" 
-                                    @click="handleInputClick"
-                                    @blur="handleBlur">
-      </div>
     </div>
 </template>
 
@@ -27,9 +21,6 @@ export default {
     return {
       activeClass: 'active',
       active1Class: 'active1',
-      activeText : {
-        textAlign: 'center'
-      }
     }
   },
   methods: {
@@ -40,12 +31,6 @@ export default {
     handleInlandActiveClick () {
       this.active1Class = 'active1'
       this.activeClass = 'active'
-    },
-    handleInputClick () {
-      this.activeText.textAlign = 'left'
-    },
-    handleBlur () {
-      this.activeText.textAlign = 'center'
     }
   }
 }
@@ -98,24 +83,4 @@ export default {
             border-left: none
             border-radius: 0 .06rem .06rem 0
             font-size: .28rem
-    .header-search
-      padding: 0 .2rem .1rem .2rem
-      height: 0.62rem
-      font-size: .26rem
-      color:#9e9e9e
-      wdith:100%
-      .city-active
-        text-align:center
-      .city-keyword
-        display: block
-        padding: .16rem 0 .16rem .1rem
-        border: 0
-        outline: 0 none
-        width: 100%
-        height:100%
-        height: .3rem
-        line-height: .3rem
-        background: #fff
-        border-radius: .06rem
-    
 </style>

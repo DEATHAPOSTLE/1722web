@@ -11,4 +11,8 @@ export default {
 </script>
 
 <style></style>
+<<<<<<< HEAD
 
+=======
+<style></style>
+>>>>>>> origin/master

@@ -6,12 +6,14 @@ import router from './router'
 import FastClick from 'fastclick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'assets/css/reset.css'
+import 'assets/css/common.css'
 import 'assets/css/iconfont/iconfont.css'
 import 'swiper/dist/css/swiper.css'
 
 FastClick.attach(document.body)
 Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
+Vue.use(VueAwesomeSwiper)
 
 const bus = new Vue()
 Vue.prototype.$bus = bus
