@@ -2,8 +2,12 @@
   <div>
     <order-header></order-header>
     <order-title></order-title>
-  	<order-date></order-date>
-    <order-footer></order-footer>
+    <order-date></order-date>
+    <order-number @showCount="updateCount"></order-number>
+    <order-visitor></order-visitor>
+    <order-more :count="count"></order-more>
+  	<order-tel></order-tel>
+    <order-footer :count="count"></order-footer>
   </div>
 </template>
 
@@ -11,6 +15,10 @@
 import OrderHeader from './header'
 import OrderTitle from './title'
 import OrderDate from './date'
+import OrderNumber from './number'
+import OrderVisitor from './visitor'
+import OrderMore from './more'
+import OrderTel from './tel'
 import OrderFooter from './footer'
 import 'assets/css/order-html-bg.css'
 export default {
@@ -19,7 +27,21 @@ export default {
     OrderHeader,
     OrderTitle,
     OrderDate,
+    OrderNumber,
+    OrderVisitor,
+    OrderMore,
+    OrderTel,
     OrderFooter
+  },
+  data () {
+    return {
+      count: 1
+    }
+  },
+  methods: {
+    updateCount (count) {
+      this.count = count
+    }
   }
 }
 </script>
