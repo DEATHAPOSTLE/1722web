@@ -1,6 +1,6 @@
 <template>
   <div class="swiper" @touchmove.prevent @scroll.prevent v-show="isShow" @click="handleHidden">
-      <swiper :options="swiperOption">
+      <swiper :options="swiperOption" v-if="list.length">
         <swiper-slide v-for="item of list" :key="item.id">
           <div class="pos">
             <img class="swiper-img" :src="item.imgUrl">
@@ -23,8 +23,7 @@ export default {
       swiperOption: {
         loop: true,
         pagination: '.swiper-pagination',
-        paginationType: 'fraction',
-        initialSlide: 1
+        paginationType: 'fraction'
       },
       isShow: false
     }

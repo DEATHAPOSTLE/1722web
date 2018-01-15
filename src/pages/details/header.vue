@@ -10,10 +10,12 @@
         <em class="img-number">10</em>
       </div>
     </div>
-    <div class="header-black">
-      <span class="black-bg"></span>
-      <span class="iconfont black-icon">&#xe625;</span>
-    </div>
+    <router-link to="/">
+      <div class="header-black">
+        <span class="black-bg"></span>
+        <span class="iconfont black-icon">&#xe625;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 

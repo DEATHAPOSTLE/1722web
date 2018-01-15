@@ -21,7 +21,9 @@
         <p class="one-price">
           ￥50
         </p>
-        <div class="btn">预定</div>
+        <router-link to="/order">
+          <div class="btn">预定</div>
+        </router-link>
       </div>
     </div>
     <div class="recommend-two">
