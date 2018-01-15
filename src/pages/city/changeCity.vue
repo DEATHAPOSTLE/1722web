@@ -5,7 +5,7 @@
          <div class="cityPlace-title">您的位置</div>
          <div class="cityPlace-city">
            <div class="cityPlace-city-light">
-             <a class="cityPlace-city-name" href="javascript:;">北京</a>
+             <div class="cityPlace-city-name">{{$bus.staticData ? $bus.staticData.city : "北京"}}</div>
            </div>
          </div>
        </div>
@@ -14,7 +14,8 @@
          <div class="hot-city-city" >
            <div class="hot-city-item"
                       v-for="item of hotList" 
-                      :key="item.id">
+                      :key="item.id"
+                      @click="handleBackClick">
              <div class="hot-city-name">{{item.city}}</div>
            </div>
          </div>
@@ -39,6 +40,11 @@ export default {
   methods: {
     scrollToIndex (item) {
       this.scroll.scrollToElement(this.$refs[item][0])
+    },
+    handleBackClick (e) {
+      const city  = e.target.innerHTML
+      this.$router.go(-1)
+      this.$bus.$emit("change", e.target.innerHTML)
     }
   },
   mounted () {

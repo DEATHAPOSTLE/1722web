@@ -5,15 +5,20 @@
 				<span class="iconfont search-icon">&#xe634;</span>
 				输入城市/景点/游戏主题	
 		</div>
-		<div class="city">北京
-		<span class="iconfont city-icon">&#xe6bc;</span>
-		</div>
+		<router-link to="/city" class="city-link">
+			<div class="city">{{city}}
+			<span class="iconfont city-icon">&#xe6bc;</span>
+			</div>
+		</router-link>
 	</div>
 </template>
 
 <script>
 export default {
-  name: 'index-header'
+  name: 'index-header',
+  props: {
+    city: String
+  }
 }
 </script>
 
@@ -39,7 +44,9 @@ export default {
 			padding-left: .4rem
 		.search-icon
 			position: relative
-			right: .2rem 
+			right: .2rem
+	.city-link
+		color: #fff
 		.city
 			padding-right: .3rem
 			position: relative
