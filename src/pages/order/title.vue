@@ -3,7 +3,7 @@
     <div class="title_left">
       <h2>【上午场】故宫成人票+故宫全景手绘地图</h2>
       <div class="title_time">
-        <span class="iconfont time">&#xe61c;</span>
+        <span class="iconfont time">&#xe633;</span>
         <span class="today">{{dateResult}}</span>
         <span class="iconfont warning">&#xe619;</span>
         <span class="warning_msg">不可退</span>

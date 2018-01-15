@@ -1,7 +1,7 @@
 <template>
     <div class="header">
     	<div class="header-area">
-       <a href="javascript:;" class="back iconfont">&#xe625;</a>
+       <router-link to="/" class="back iconfont">&#xe625;</router-link>
        <h1 class="area">
          <div class="area-city">
            <span class="inland" :class="[activeClass]" @click="handleInlandActiveClick">国内</span>

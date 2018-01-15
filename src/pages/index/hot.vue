@@ -1,19 +1,21 @@
 <template>
   <div class="hot">
     <h2 class="caption">热销推荐</h2>
-    <div class="hot-item" v-for="item of list" :key="item.id">
-      <img class="hot-img" :src="item.imgUrl" alt="">
-      <div class="hot-content">
-        <p class="hot-title">{{item.title}}</p>
-        <p class="hot-desc">
-          {{item.desc}}
-        </p>
-        <p class="hot-price">
-          <span class=" iconfont price-tag">&#xe635;</span>{{item.price}}
-          <span class="price-start">起</span>
-        </p>
-      </div>
-    </div>
+      <router-link to="/details">
+        <div class="hot-item" v-for="item of list" :key="item.id">
+          <img class="hot-img" :src="item.imgUrl" alt="">
+          <div class="hot-content">
+            <p class="hot-title">{{item.title}}</p>
+            <p class="hot-desc">
+              {{item.desc}}
+            </p>
+            <p class="hot-price">
+              <span class=" iconfont price-tag">&#xe635;</span>{{item.price}}
+              <span class="price-start">起</span>
+            </p>
+          </div>
+        </div>
+      </router-link>
     <div class="hot-more">
       查看所有产品
     </div>

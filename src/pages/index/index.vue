@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<index-header></index-header>
+		<index-header :city="city"></index-header>
   	<index-swiper :list="swiperInfo"></index-swiper>
     <index-icons :list="iconsInfo"></index-icons>
     <index-hot :list="hotInfo"></index-hot>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+/* eslint-disable */
   import IndexHeader from './header'
   import IndexSwiper from './swiper'
   import IndexIcons from './icons'
@@ -30,6 +31,7 @@
     },
     data () {
       return {
+        city: '',
         swiperInfo: [],
         iconsInfo: [],
         hotInfo: [],
@@ -48,16 +50,25 @@
         this.iconsInfo = data.iconsList
         this.hotInfo = data.hotList
         this.recommendInfo = data.recommendList
+        this.city = data.city
+        this.$bus.staticData = {
+          city: data.city
+        }
       },
       handleGetDateErr () {
         console.log('error')
+      },
+      bingEvents () {
+        this.$bus.$on('change', this.handleCityChange.bind(this))
+      },
+      handleCityChange (value) {
+        this.city = value
       }
-
     },
     created () {
       this.getIndexData()
+      this.bingEvents()
     }
   }
 </script>
- 
 <style></style>
